@@ -1,0 +1,25 @@
+﻿.index .material-icons {
+    font-size: 80px;
+}
+
+.index .card-header {
+    text-align: center;
+}
+
+.navbar-btntxt {
+   margin-top: 1rem;
+}
+
+    .navbar-btntxt .btn {
+       margin-left:1rem;
+    
+    }
+
+.roomtext {
+font-size:16px;
+}
+
+ .Rooms-Card {
+ 
+margin-top:30px;
+}

@@ -1,0 +1,132 @@
+﻿@{
+    Layout = null;
+    var Page = ViewBag.PageName;
+}
+
+<div class="sidebar" data-color="purple" data-background-color="black" data-image="/Content/assets/img/sidebar-2.jpg">
+   <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+    <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+            Ақылды Үй
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="material-icons">home</i>
+                    <p>Басты</p>
+                </a>
+            </li>
+            <li class="nav-item">
+
+                @if (Page == "Living")
+                {
+                    <a class="nav-link" href="/Home/Living">
+                        <i class="material-icons">living</i>
+                        <p>Қонақ бөлме</p>
+                    </a>
+                }
+                else if (Page == "Bed")
+                {
+                    <a class="nav-link" href="/Home/Bed">
+                        <i class="material-icons"> bed</i>
+                        <p>Жатын бөлме</p>
+                    </a>
+                }
+                else if (Page == "Bath")
+                {
+                    <a class="nav-link" href="/Home/Bath">
+                        <i class="material-icons">  bathtub</i>
+                        <p>Жуынатын бөлме</p>
+                    </a>
+                }
+                else if (Page == "Dining")
+                {
+                    <a class="nav-link" href="/Home/Dining">
+                        <i class="material-icons">kitchen</i>
+                        <p>Ас бөлме</p>
+                    </a>
+                }
+
+
+
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/User/Account">
+                    <i class="material-icons">link</i>
+                    <p>Жалғану</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/swagger" target="_blank">
+                    <i class="material-icons"> description</i>
+                    <p>API құжаттамасы</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">
+                    <i class="material-icons"> logout</i>
+                    <p>Шығу</p>
+                </a>
+
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "hidden" }))
+                {
+                    @Html.AntiForgeryToken()
+                }
+
+            </li>
+
+          
+
+
+
+            <li></li>
+            <li style="margin-top:30px">
+
+                <!-- Gismeteo informer START -->
+                <link rel="stylesheet" type="text/css" href="https://ost1.gismeteo.kz/assets/flat-ui/legacy/css/informer.min.css">
+                <div id="gsInformerID-l8njo6g4oP2B3T" class="gsInformer" style="width:261px;height:227px">
+                    <div class="gsIContent">
+                        <div id="cityLink">
+                            <a href="https://www.gismeteo.kz/weather-almaty-5205/" target="_blank" title="Погода в Алматы">
+                                <img src="https://ost1.gismeteo.kz/assets/flat-ui/img/gisloader.svg" width="24" height="24" alt="Погода в Алматы">
+                            </a>
+                        </div>
+                        <div class="gsLinks">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="leftCol">
+                                            <a href="https://www.gismeteo.kz/" target="_blank" title="Погода">
+                                                <img alt="Погода" src="https://ost1.gismeteo.kz/assets/flat-ui/img/logo-mini2.png" align="middle" border="0" width="11" height="16" />
+                                                <img src="https://ost1.gismeteo.kz/assets/flat-ui/img/informer/gismeteo.svg" border="0" align="middle" style="left: 5px; top:1px">
+                                            </a>
+                                        </div>
+                                        <div class="rightCol">
+                                            <a href="https://www.gismeteo.kz/weather-almaty-5205/2-weeks/" target="_blank" title="Погода в Алматы на 2 недели">
+                                                <img src="https://ost1.gismeteo.kz/assets/flat-ui/img/informer/forecast-2weeks.ru.svg" border="0" align="middle" style="top:auto" alt="Погода в Алматы на 2 недели">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <script async src="https://www.gismeteo.kz/api/informer/getinformer/?hash=l8njo6g4oP2B3T"></script>
+                <!-- Gismeteo informer END -->
+                <!-- your sidebar here -->
+
+
+            </li>
+        </ul>
+    </div>
+</div>

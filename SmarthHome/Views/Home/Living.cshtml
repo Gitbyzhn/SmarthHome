@@ -1,0 +1,271 @@
+﻿
+@model  SmarthHome.Models.ViewModels.RoomModel
+
+
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+
+
+<div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+            <div class="d-flex flex-column navbar-btntxt">
+                <div>
+
+                    <a class="btn btn-primary" href="/Device/Index?RoomId=1"> + Құрылғыны қосу </a>
+                </div>
+
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:void(0)">Қайырлы күн @Model.UserName !</a>
+                </div>
+            </div>
+
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+            </button>
+
+
+
+
+
+        </div>
+    </nav>
+
+
+
+    <!-- End Navbar -->
+    <div class="content">
+        <div class="container-fluid" style="padding-top:25px">
+
+            <input id="room" value="1" type="hidden"/>
+
+            @if (Model.Devices.Camera != null)
+            {
+                var IsActive = Model.Devices.Camera.IsActive ? "checked" : "";
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-success">
+                                <img src="~/Content/Camera.PNG" style="width:100%" />
+
+
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title d-flex">  <i class="material-icons">camera_rear</i> Камера</h4>
+
+                                <div class="example float-right">
+
+                                    <input type="checkbox" @IsActive data-toggle="toggle" data-onstyle="info" data-size="sm" id="camera" onchange="DeviceState(1)">
+
+
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    @if (Model.Devices.Camera.Connect)
+                                    {
+                                        <i class="material-icons text-info"> radio_button_checked</i>
+                                        <a href="#pablo" class="info-link">Қосылған</a>
+                                    }
+                                    else
+                                    {
+                                        <i class="material-icons text-warning">warning</i>
+                                        <a href="#pablo" class="warning-link">Ажыратылған</a>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            }
+
+            <div class="row">
+
+                @if (Model.Devices.Light != null)
+                {
+
+                    var IsActive = Model.Devices.Light.IsActive ? "checked" : "";
+
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">light</i>
+                                </div>
+                                <p class="card-category">Жарық</p>
+                                <div class="example">
+
+                                    <input type="checkbox" @IsActive data-toggle="toggle" data-onstyle="info" data-size="sm" id="light" onchange="DeviceState(2)">
+
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    @if (Model.Devices.Light.Connect)
+                                    {
+                                        <i class="material-icons text-info"> radio_button_checked</i>
+                                        <a href="#pablo" class="info-link">Қосылған</a>
+                                    }
+                                    else
+                                    {
+                                        <i class="material-icons text-warning">warning</i>
+                                        <a href="#pablo" class="warning-link">Ажыратылған</a>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                @if (Model.Devices.Conditioner != null)
+                {
+                    var IsActive = Model.Devices.Conditioner.IsActive ? "checked" : "";
+
+
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">hvac</i>
+                                </div>
+                                <p class="card-category">Кондиционер</p>
+
+                                <div class="example">
+
+                                    <input type="checkbox" @IsActive data-toggle="toggle" data-onstyle="info" data-size="sm" id="conditioner" onchange="DeviceState(3)">
+
+
+                                </div>
+
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+
+
+                                    @if (Model.Devices.Conditioner.Connect)
+                                    {
+                                        <i class="material-icons text-info"> radio_button_checked</i>
+                                        <a href="#pablo" class="info-link">Қосылған</a>
+                                    }
+                                    else
+                                    {
+                                        <i class="material-icons text-warning">warning</i>
+                                        <a href="#pablo" class="warning-link">Ажыратылған</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                @if (Model.Devices.Curtains != null)
+                {
+                    var IsActive = Model.Devices.Curtains.IsActive ? "checked" : "";
+
+
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-danger card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">curtains</i>
+                                </div>
+                                <p class="card-category">Перделер</p>
+                                <div class="example">
+
+                                    <input type="checkbox" @IsActive data-toggle="toggle" data-onstyle="info" data-size="sm" id="curtains" onchange="DeviceState(4)">
+
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    @if (Model.Devices.Curtains.Connect)
+                                    {
+                                        <i class="material-icons text-info"> radio_button_checked</i>
+                                        <a href="#pablo" class="info-link">Қосылған</a>
+                                    }
+                                    else
+                                    {
+                                        <i class="material-icons text-warning">warning</i>
+                                        <a href="#pablo" class="warning-link">Ажыратылған</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.Devices.TV != null)
+                {
+                    var IsActive = Model.Devices.TV.IsActive ? "checked" : "";
+
+
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-info card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">tv</i>
+                                </div>
+                                <p class="card-category">Android TV</p>
+                                <div class="example">
+
+                                    <input type="checkbox" @IsActive data-toggle="toggle" data-onstyle="info" data-size="sm" id="tv" onchange="DeviceState(5)">
+
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    @if (Model.Devices.TV.Connect)
+                                    {
+                                        <i class="material-icons text-info"> radio_button_checked</i>
+                                        <a href="#pablo" class="info-link">Қосылған</a>
+                                    }
+                                    else
+                                    {
+                                        <i class="material-icons text-warning">warning</i>
+                                        <a href="#pablo" class="warning-link">Ажыратылған</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    @Html.Partial("~/Views/Shared/Footer.cshtml")
+
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+<script src="~/Content/js/DeviceState.js"></script>

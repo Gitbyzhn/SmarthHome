@@ -1,0 +1,105 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Account.cshtml";
+
+}
+
+
+<div class="container" style="position:absolute">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="login-box">
+                <div id="login-box-holder">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <header id="login-header">
+                                <div id="login-logo">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    Smart Home
+
+                                </div>
+                            </header>
+                            <div id="login-box-inner">
+
+
+                                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true)
+
+
+                                 
+
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+
+                                        <input class="form-control" type="email" placeholder="Email" name="Email" required>
+
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                        <input class="form-control" type="text" placeholder="Имя" name="Name" required maxlength="100" >
+
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                                        <input class="form-control" type="text" placeholder="Фамилия" name="SureName"  maxlength="100">
+
+                                    </div>
+
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+
+                                        <input type="password" id="password" class="form-control" placeholder="Пароль" name="Password" maxlength="100" required>
+
+                                        <span style="cursor:pointer" class="input-group-addon" onclick="showpassword()"><i class="fa fa-eye"></i></span>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                    <div class="row" style="margin-top:15px">
+                                        <div class="col-xs-12">
+                                            <button id="btnsuc" type="submit" class="btn btn-success col-xs-12">Тіркелу</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" style="margin-top:18px">
+                                        <div class="col-xs-12">
+
+                                            Сіз тіркелгенсіз бе?
+
+                                            <a href="@Url.Action("Login","Account")" class="registerbtn">Кіру</a>
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

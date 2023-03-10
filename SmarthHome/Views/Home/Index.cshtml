@@ -1,0 +1,146 @@
+﻿@model  SmarthHome.Models.ViewModels.IndexModel
+
+
+
+
+<div class="main-panel index">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+            <div class="d-flex flex-column navbar-btntxt">
+                <div>
+
+                    <a class="btn btn-primary" href="/Room/Add/"> + Бөлме Қосу </a>
+                </div>
+
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:void(0)">Қайырлы күн @Model.UserName !</a>
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+            </button>
+   
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row Rooms-Card">
+
+
+                @if (Model.Rooms.Living)
+                {
+
+                    <a class="col-lg-3 col-6" href="/Home/Living">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-success">
+                                <span class="material-icons">
+                                    living
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Қонақ бөлме</h4>
+                                @*<p class="card-category">
+                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.
+                        </p>*@
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                }
+
+
+                @if (Model.Rooms.Bed)
+                {
+
+                    <a class="col-lg-3 col-6" href="/Home/Bed">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-warning">
+                                <span class="material-icons">
+                                    bed
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Жатын бөлме</h4>
+
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                }
+
+                @if (Model.Rooms.Bath)
+                {
+
+
+                    <a class="col-lg-3 col-6" href="/Home/Bath">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-info">
+                                <span class="material-icons">
+                                    bathtub
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Жуынатын бөлме</h4>
+
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                }
+
+                @if (Model.Rooms.Dining)
+                {
+
+                    <a class="col-lg-3 col-6" href="/Home/Dining">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-danger">
+                                <span class="material-icons">
+                                    kitchen
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Ас бөлме</h4>
+
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                }
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+    @Html.Partial("~/Views/Shared/Footer.cshtml")
+
+</div>
